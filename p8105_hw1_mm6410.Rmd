@@ -1,16 +1,59 @@
 ---
 title: "p8105_hw1_mm6410"
-author: Mahdi Maktabi - mm6410
+author: "Mahdi Maktabi - mm6410"
 date: 2024-09-19
 output: github_document
 ---
 
 ```{r setup, echo = FALSE, message=FALSE}
 library(tidyverse)
+library(dplyr)
 ```
 
 This document is P8105 Homework 1.
 
+I loaded necessary packages (e.g. `tidyverse`). 
+
 ## Problem 1
+
+
+
+```{r}
+data("penguins", package = "palmerpenguins")
+
+penguins =
+  janitor::clean_names(penguins)
+```
+
+
+```{r}
+nrow(penguins)
+ncol(penguins)
+mean(penguins[["flipper_length_mm"]], na.rm = TRUE)
+```
+
+Looking at the data, there are:
+
+*   344 rows and 8 columns (variables)
+*   Variable include: Species, Island, Bill Length (mm), Bill Depth (mm),           Flipper Length (mm), Body Mass (g), Sex, and Year.
+*   The mean of flipper_length_mm = 200.9152
+
+
+```{r, message=FALSE, warning = FALSE}
+ggplot(
+  penguins, 
+  aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +  
+  geom_point()
+
+ggsave("HW1_scatterplot.pdf")
+```
+
+
+------------------------------------------------------------
+
+
+## Problem 2
+
+
 
 
